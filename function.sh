@@ -22,3 +22,13 @@ function str_replace_file {
 
     sed -i "s|$1|$2|" $3
 }
+
+# $1 - repo url like git@github.com:%username%/%project%.git
+function repo_access_check {
+    git ls-remote "$1" &>-
+    if [ "$?" -ne 0 ]; then
+        print_error "Repo $1 is not accessible"
+    else
+        print_info "Repo $1 is accessible"
+    fi
+}
