@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 
+# $1 - variable name
+function fail_if_empty {
+    if [ -z "$1" ]; then
+        print_error "Empty string detected"
+    fi
+}
+
+# $1 - variable name
+function fail_if_not_empty {
+    if [ -n "$1" ]; then
+        print_error "String is not empty"
+    fi
+}
+
 # $1 - search
 # $2 - replace
 # $3 - file
